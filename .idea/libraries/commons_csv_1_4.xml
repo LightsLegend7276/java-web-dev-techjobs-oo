@@ -2,6 +2,7 @@
   <library name="commons-csv-1.4">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/commons-csv-1.4.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/lombok.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
