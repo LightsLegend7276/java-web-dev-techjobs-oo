@@ -49,8 +49,61 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality() {
-
         assertNotEquals(result3, result4);
+    }
 
+    @Test
+    public void testToStringBeginsWithNewLine() {
+        assertEquals("\n", result1.toString().substring(0,1));
+    }
+
+    @Test
+    public void testToStringEndsWithNewLine() {
+        assertEquals("\n", result1.toString().substring(result1.toString().length() - 1));
+    }
+
+    @Test
+    public void testToStringLabels() {
+        assertTrue(result3.toString().contains("ID"));
+        assertTrue(result3.toString().contains("Name"));
+        assertTrue(result3.toString().contains("Employer"));
+        assertTrue(result3.toString().contains("Location"));
+        assertTrue(result3.toString().contains("Position Type"));
+        assertTrue(result3.toString().contains("Core Competency"));
+    }
+
+    @Test
+    public void testToStringDataFields() {
+        assertTrue(result3.toString().contains("Product Tester"));
+        assertTrue(result3.toString().contains("ACME"));
+        assertTrue(result3.toString().contains("Desert"));
+        assertTrue(result3.toString().contains("19"));
+        assertTrue(result3.toString().contains("Quality Control"));
+        assertTrue(result3.toString().contains("Persistence"));
+    }
+
+    @Test
+    public void testToStringResult() {
+        String expected = "\nID: 7" +
+                "\nName: Product Tester" +
+                "\nEmployer: ACME" +
+                "\nLocation: Desert" +
+                "\nPosition Type: Quality Control" +
+                "\nCore Competency: Persistence" +
+                "\n";
+        assertEquals(expected, result3.toString());
+    }
+
+    @Test
+    public void testToStringEmptyDataFields() {
+        Job expected = new Job();
+        expected.setName("Test");
+        assertTrue(expected.toString().contains("Data not available"));
+    }
+
+    @Test
+    public void testToStringAllFieldsEmpty() {
+        System.out.println(result1);
+        assertTrue(result1.toString().contains("OOPS! This job does not seem to exist."));
     }
 }
